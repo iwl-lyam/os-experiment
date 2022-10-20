@@ -5,3 +5,4 @@
 *.ld
 objconv 
 *.bin
+*.out
