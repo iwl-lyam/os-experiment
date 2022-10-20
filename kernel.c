@@ -116,5 +116,7 @@ void kernel_main(void)
  
 	terminal_setcolor(VGA_COLOR_RED);
 	/* Newline support is left as an exercise. */
-	terminal_writestring("Hello, kernel World!\nFun times");
+	terminal_writestring("Hello, kernel World!\n");
+	terminal_setcolor(VGA_COLOR_BLUE);
+	terminal_writestring("Now in blue!\n");
 }
