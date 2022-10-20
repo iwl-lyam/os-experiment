@@ -1,0 +1,7 @@
+/build
+/grub 
+/objconvsrc
+*.o
+*.ld
+objconv 
+*.bin
