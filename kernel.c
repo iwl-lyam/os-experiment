@@ -114,6 +114,7 @@ void kernel_main(void)
 	/* Initialize terminal interface */
 	terminal_initialize();
  
+	terminal_setcolor(VGA_COLOR_RED);
 	/* Newline support is left as an exercise. */
 	terminal_writestring("Hello, kernel World!\nFun times");
 }
