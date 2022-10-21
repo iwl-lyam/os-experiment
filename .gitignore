@@ -2,7 +2,6 @@
 /grub 
 /objconvsrc
 *.o
-*.ld
 objconv 
 *.bin
 .DS_Store
