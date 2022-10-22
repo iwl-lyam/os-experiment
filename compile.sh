@@ -1,5 +1,5 @@
 echo Assembling
-i686-elf-as boot.s -o boot.o
+nasm -felf32 boot.s -o boot.o
 echo "Assembled ... Compiling"
 i686-elf-gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 #i686-elf-gcc -c descriptor_tables.c -o descriptor_tables.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
