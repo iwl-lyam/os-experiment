@@ -35,6 +35,10 @@ stack_top:
 ; bootloader will jump to this position once the kernel has been loaded. It
 ; doesn't make sense to return from this function as the bootloader is gone.
 ; Declare _start as a function symbol with the given symbol size.
+section .data
+    gdtr DW 0 ; For limit storage
+    DD 0 ; For base storage
+
 section .text
 global _start:function (_start.end - _start)
 
@@ -64,8 +68,8 @@ _start:
 	; C++ features such as global constructors and exceptions will require
 	; runtime support to work as well.
 
-    ;call setGdt
-    ;call reloadSegments
+    call setGdt
+    call reloadSegments
  
 	; Enter the high-level kernel. The ABI requires the stack is 16-byte
 	; aligned at the time of the call instruction (which afterwards pushes
@@ -91,9 +95,6 @@ _start:
 .hang:	hlt
 	jmp .hang
 .end:  
-
-gdtr DW 0 ; For limit storage
-   DD 0 ; For base storage
 
 setGdt:
     MOV   AX, [esp + 4]
