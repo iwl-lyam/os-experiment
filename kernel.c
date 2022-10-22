@@ -104,8 +104,9 @@ void terminal_write(const char* data, size_t size)
 		terminal_putchar(data[i]);
 }
  
-void terminal_writestring(const char* data) 
+void terminal_writestring(const char* data, uint8_t color) 
 {
+	terminal_setcolor(color);
 	terminal_write(data, strlen(data));
 }
  
@@ -113,10 +114,7 @@ void kernel_main(void)
 {
 	/* Initialize terminal interface */
 	terminal_initialize();
- 
-	terminal_setcolor(VGA_COLOR_RED);
-	/* Newline support is left as an exercise. */
-	terminal_writestring("Hello, kernel World!\n");
-	terminal_setcolor(VGA_COLOR_BLUE);
-	terminal_writestring("Now in blue!\n");
+ 	/* Newline support is left as an exercise. */
+	terminal_writestring("Hello, kernel World!\n", VGA_COLOR_RED);
+	terminal_writestring("Now in blue!\n", VGA_COLOR_BLUE);
 }
